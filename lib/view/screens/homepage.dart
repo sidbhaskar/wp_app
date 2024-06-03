@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:wp_app/controllers/api.dart';
 import 'package:wp_app/view/widgets/categoryblock.dart';
 import 'package:wp_app/view/widgets/custom_appbar.dart';
 
 import '../widgets/searchbar.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  @override
+  void initState() {
+    super.initState();
+    ApiOperations.getTrendingWallpaper();
+  }
 
   @override
   Widget build(BuildContext context) {
