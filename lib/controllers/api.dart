@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 class ApiOperations {
@@ -7,7 +9,15 @@ class ApiOperations {
           "yLFCCQHpFzOoOQlliivJAEyaR6p1ov3gTU2oiHHukuwxhdxomOOcHwzr"
     }).then(
       (value) {
-        print(value.body[0]);
+        Map<String, dynamic> jsonData = jsonDecode(value.body);
+        List photos = jsonData['photos'];
+        photos.forEach(
+          (element) {
+            // print(element);
+            Map<String, dynamic> src = element['src'];
+            print(src['portrait']);
+          },
+        );
       },
     );
   }
