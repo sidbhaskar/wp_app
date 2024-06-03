@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:wp_app/models/photos_model.dart';
 
 class ApiOperations {
+  static List<PhotosModel> trendingWallpapers = [];
   static getTrendingWallpaper() async {
     await http.get(Uri.parse("https://api.pexels.com/v1/curated"), headers: {
       "Authorization":
@@ -14,8 +16,7 @@ class ApiOperations {
         photos.forEach(
           (element) {
             // print(element);
-            Map<String, dynamic> src = element['src'];
-            print(src['portrait']);
+            trendingWallpapers.add(PhotosModel.fromAPI2App(element));
           },
         );
       },
