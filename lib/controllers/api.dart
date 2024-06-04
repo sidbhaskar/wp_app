@@ -5,7 +5,7 @@ import 'package:wp_app/models/photos_model.dart';
 
 class ApiOperations {
   static List<PhotosModel> trendingWallpapers = [];
-  static getTrendingWallpaper() async {
+  static Future<List<PhotosModel>> getTrendingWallpaper() async {
     await http.get(Uri.parse("https://api.pexels.com/v1/curated"), headers: {
       "Authorization":
           "yLFCCQHpFzOoOQlliivJAEyaR6p1ov3gTU2oiHHukuwxhdxomOOcHwzr"
@@ -21,5 +21,6 @@ class ApiOperations {
         );
       },
     );
+    return trendingWallpapers;
   }
 }

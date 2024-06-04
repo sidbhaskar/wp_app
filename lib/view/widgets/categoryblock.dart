@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Categoryblock extends StatelessWidget {
-  const Categoryblock({super.key});
+  String imgSrc;
+  Categoryblock({super.key, required this.imgSrc});
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +13,7 @@ class Categoryblock extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.network(
-                height: 70,
-                width: 120,
-                fit: BoxFit.cover,
-                "https://4kwallpapers.com/images/walls/thumbs_3t/10679.jpg"),
+                height: 70, width: 120, fit: BoxFit.cover, imgSrc),
           ),
           Container(
             height: 70,

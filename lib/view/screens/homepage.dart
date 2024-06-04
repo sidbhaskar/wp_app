@@ -3,6 +3,7 @@ import 'package:wp_app/controllers/api.dart';
 import 'package:wp_app/view/widgets/categoryblock.dart';
 import 'package:wp_app/view/widgets/custom_appbar.dart';
 
+import '../../models/photos_model.dart';
 import '../widgets/searchbar.dart';
 
 class Homepage extends StatefulWidget {
@@ -13,10 +14,17 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  late List<PhotosModel> trendingWallList;
+
+  GetTrendingWallpapers() async {
+    trendingWallList = await ApiOperations.getTrendingWallpaper();
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
-    ApiOperations.getTrendingWallpaper();
+    GetTrendingWallpapers();
   }
 
   @override
@@ -37,8 +45,10 @@ class _HomepageState extends State<Homepage> {
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) => Categoryblock(),
+              itemCount: trendingWallList.length,
+              itemBuilder: (context, index) => Categoryblock(
+                imgSrc: trendingWallList[index].imgSrc,
+              ),
             ),
           ),
           SizedBox(height: 20),

@@ -15,15 +15,15 @@ class SearchPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 62,
-            width: MediaQuery.of(context).size.width,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) => Categoryblock(),
-            ),
-          ),
+          // SizedBox(
+          //   height: 62,
+          //   width: MediaQuery.of(context).size.width,
+          //   child: ListView.builder(
+          //     scrollDirection: Axis.horizontal,
+          //     itemCount: 10,
+          //     itemBuilder: (context, index) => Categoryblock(),
+          //   ),
+          // ),
           SizedBox(height: 20),
           Expanded(
             // height: 500,
